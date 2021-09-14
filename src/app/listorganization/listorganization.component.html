@@ -1,0 +1,36 @@
+<h1>Organization</h1>
+<a routerLink="/addorganization" class="btn btn-sm btn-success mb-2">Add Organization</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th style="width: 30%">Name</th>
+            <th style="width: 30%">Country</th>
+            <th style="width: 30%">City</th>
+            <th style="width: 10%"></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr *ngFor="let org of organizations ;let i = index">
+            <td>{{org.Orgname}}</td>
+            <td>{{org.Country}}</td>
+            <td>{{org.City}}</td>
+            <td style="white-space: nowrap">
+                <a routerLink="edit/{{org.Id}}" class="btn btn-sm btn-primary mr-1">Edit</a>
+                &nbsp;&nbsp;&nbsp;
+
+                <button (click)="deleteorganization(org.Id)" class="btn btn-sm btn-danger btn-delete-user">
+
+                    <!-- <span *ngIf="org.isDeleting" class="spinner-border spinner-border-sm"></span> -->
+                    <span>Delete</span>
+                </button>
+            </td>
+        </tr>
+        <tr *ngIf="!organizations">
+            <td colspan="4" class="text-center">
+                <span class="spinner-border spinner-border-lg align-center"></span>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
